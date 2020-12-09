@@ -49,9 +49,7 @@ server.post("/beer", (req, res) => {
 server.get("/", (req, res) => {
     res.send(beerStock);
 });
-server.get("/beerStock", (req, res) => {
-    res.send(beerStock);
-});
+
 
 server.get("/:type", (req, res) => {
     const type = req.params.type;
@@ -88,7 +86,7 @@ server.post("/beers", (req, res) => {
 });
 
 server.delete("/trash/:id", (req, res) => {
-    const id = req.params.id;
+    let id = req.params.id;
     let beeIdx = -1;
     beerStock.map((bee, idx) => {
         if (bee.bId === id) {
@@ -106,27 +104,3 @@ server.delete("/trash/:id", (req, res) => {
         success: "Success"
     });
 });
-
-
-
-
-
-// {
-//     const id = req.params.id;
-//     let beeIdx = -1;
-//     beerStock.map((bee, idx) => {
-//         if (bee.bId === id) {
-//             beeIdx = idx;
-//             return;
-//         }
-//     });
-
-//     if (beeIdx === -1) {
-//         console.log(id);
-//         return res.status(404).send("Beer not found");
-//     }
-//     beerStock.splice(beeIdx, 1);
-//     res.send({
-//         success: "Success"
-//     });
-// });
