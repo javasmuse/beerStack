@@ -49,6 +49,9 @@ server.post("/beer", (req, res) => {
 server.get("/", (req, res) => {
     res.send(beerStock);
 });
+server.get("/beerStock", (req, res) => {
+    res.send(beerStock);
+});
 
 server.get("/:type", (req, res) => {
     const type = req.params.type;
